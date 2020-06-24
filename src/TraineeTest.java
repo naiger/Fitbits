@@ -4,23 +4,24 @@ import org.junit.jupiter.api.Test;
 
 class TraineeTest {
 	
-	Trainee t = new Trainee(1, 2, "N");
+	Pitch p = new Pitch(5, 5);
+	Trainee t = new Trainee(1, 2, "W");
 	
 	@Test
 	void testGetCurrentOrien() {
-		assertEquals("N", t.getCurrentOrien());
+		assertEquals("W", t.getCurrentOrien());
 	}
 
 	@Test
 	void testTrunLeft() {
 		t.turnLeft();
-		assertEquals("W", t.getCurrentOrien());
+		assertEquals("S", t.getCurrentOrien());
 	}
 	
 	@Test
 	void testTurnRight() {
 		t.turnRight();
-		assertEquals("E", t.getCurrentOrien());
+		assertEquals("N", t.getCurrentOrien());
 	}
 	
 	@Test 
@@ -32,10 +33,25 @@ class TraineeTest {
 
 	
 	@Test
-	void testMove() {
-		t.move();
+	void testForward() {
+		t.forward();
 		int[] position = t.getPosition();
-		assertEquals(3, position[1]);
+		assertEquals(0, position[0]);
+	}
+	
+	@Test
+	void testIsInPitchAfterMove() {
+		int[] position = {0, 2};
+		assertEquals(false, t.isInPitchAfterMove(p, position));
+	}
+	
+	@Test
+	void testMove() {
+		t.move("LMLMLMLMM", p);
+		int[] position = t.getPosition();
+		assertEquals(0, position[0]);
+		assertEquals(2, position[1]);
+		assertEquals("W", t.getCurrentOrien());
 	}
 	
 }

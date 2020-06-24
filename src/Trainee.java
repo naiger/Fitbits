@@ -22,7 +22,7 @@ public class Trainee {
 	}
 	
 	//let trainee move forward one grid position on the current orientation
-	public void move() {
+	public void forward() {
 		switch(this.orientation) {
 		case "N":
 			this.position_y ++;
@@ -73,5 +73,38 @@ public class Trainee {
 			this.orientation = "N";
 			break;
 		}		
+	}
+	
+	//verify position after movement is still in coach 
+	public boolean isInPitchAfterMove(Pitch p, int[] position) {
+		int width = p.getWidth();
+		int height = p.getHeight();
+		String orien = this.getCurrentOrien();
+		if (isInPitchAfterMoveOnCoordinate(width, position[0], orien) 
+			&& isInPitchAfterMoveOnCoordinate(height, position[1], orien)) return true;
+		else return false;
+	}
+		
+	//verify movement on X or Y coordinate 
+	private boolean isInPitchAfterMoveOnCoordinate(int max, int x, String orien) {
+		if ( x > 0 && x < max) return true;
+		else if ( x == 0 && orien != "W") return true;
+		else if ( x == max && orien != "E") return true;
+		else return false;
+	}
+	
+	//implement all movements of the trainee
+	public void move(String movements, Pitch p) {
+		String[] moves = movements.split("");
+		for(int i = 0; i < moves.length; i++) {
+			switch(moves[i]) {
+			case "L": this.turnLeft();
+				break;
+			case "R": this.turnRight();
+				break;
+			case "M": if(isInPitchAfterMove(p, this.getPosition())) this.forward(); //if trainee is going get out of the coach, stop moving
+					break;
+			}
+		}
 	}
 }
