@@ -75,7 +75,7 @@ public class Trainee {
 		}		
 	}
 	
-	//verify position after movement is still in coach 
+	//verify position after movement is still in pitch 
 	public boolean isInPitchAfterMove(Pitch p, int[] position) {
 		int width = p.getWidth();
 		int height = p.getHeight();
@@ -100,7 +100,7 @@ public class Trainee {
 		else return false;
 	}
 	
-	//implement all movements of the trainee
+	//implement all movements to the trainee
 	public void move(String movements, Pitch p) {
 		String[] moves = movements.split("");
 		for(int i = 0; i < moves.length; i++) {
@@ -109,7 +109,7 @@ public class Trainee {
 				break;
 			case "R": this.turnRight();
 				break;
-			case "M": if(isInPitchAfterMove(p, this.getPosition())) this.forward(); //if trainee is going get out of the coach, stop moving
+			case "M": if(isInPitchAfterMove(p, this.getPosition())) this.forward(); //if trainee is going to move out of the pitch, stop moving
 					break;
 			}
 		}

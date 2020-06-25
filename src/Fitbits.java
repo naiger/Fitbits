@@ -21,11 +21,13 @@ public class Fitbits {
 		
 		try {
 			Scanner scan = new Scanner(file);
-			if(scan.hasNextLine()) {
-				inputLine = scan.nextLine();
-				pitchSetUp = inputLine.split(" ");
-				p = new Pitch(Integer.parseInt(pitchSetUp[0]), Integer.parseInt(pitchSetUp[1]));
-			}
+			
+			//setup pitch
+			inputLine = scan.nextLine();
+			pitchSetUp = inputLine.split(" ");
+			p = new Pitch(Integer.parseInt(pitchSetUp[0]), Integer.parseInt(pitchSetUp[1]));
+			
+			//setup trainees and movements
 			while(scan.hasNextLine()) {
 				inputLine = scan.nextLine();
 				traineeSetUp = inputLine.split(" ");
@@ -39,7 +41,8 @@ public class Fitbits {
 		catch(Exception e){
 			System.out.println(e);
 		}
-
+		
+		//move each trainee and print result
 		for (int i = 0; i < trainees.size(); i++) {
 			trainees.get(i).move(movements.get(i), p);
 			int[] position = trainees.get(i).getPosition();
