@@ -41,8 +41,14 @@ class TraineeTest {
 	
 	@Test
 	void testIsInPitchAfterMove() {
+		//test on x coordinate
 		int[] position = {0, 2};
 		assertEquals(false, t.isInPitchAfterMove(p, position));
+		
+		//test on y coordinate
+		t.turnRight();
+		int[] position2 = {1, 5};
+		assertEquals(false, t.isInPitchAfterMove(p, position2));
 	}
 	
 	@Test

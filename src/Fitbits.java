@@ -35,8 +35,8 @@ public class Fitbits {
 			//print position and orientation after move
 			System.out.println("The trainee's position and orientation after move: ");
 			System.out.println(position[0]+ " " + position[1] + " " + t.getCurrentOrien() + "\n");
-			System.out.println("Enter 'exit' to exit or enter 'C' to continue");
-		} while(!scan.next().equals("exit") || scan.next().equals("C"));
+			System.out.println("Enter 'exit' to exit or enter any value to continue");
+		} while(!scan.next().equals("exit"));
 
 		scan.close();
 	}

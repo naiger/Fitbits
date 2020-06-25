@@ -80,16 +80,23 @@ public class Trainee {
 		int width = p.getWidth();
 		int height = p.getHeight();
 		String orien = this.getCurrentOrien();
-		if (isInPitchAfterMoveOnCoordinate(width, position[0], orien) 
-			&& isInPitchAfterMoveOnCoordinate(height, position[1], orien)) return true;
+		if (isInPitchAfterMoveOnX(width, position[0], orien) 
+			&& isInPitchAfterMoveOnY(height, position[1], orien)) return true;
 		else return false;
 	}
 		
 	//verify movement on X or Y coordinate 
-	private boolean isInPitchAfterMoveOnCoordinate(int max, int x, String orien) {
-		if ( x > 0 && x < max) return true;
+	private boolean isInPitchAfterMoveOnX(int width, int x, String orien) {
+		if ( x > 0 && x < width) return true;
 		else if ( x == 0 && orien != "W") return true;
-		else if ( x == max && orien != "E") return true;
+		else if ( x == width && orien != "E") return true;
+		else return false;
+	}
+	
+	private boolean isInPitchAfterMoveOnY(int height, int y, String orien) {
+		if ( y > 0 && y < height) return true;
+		else if ( y == 0 && orien != "S") return true;
+		else if ( y == height && orien != "N") return true;
 		else return false;
 	}
 	
