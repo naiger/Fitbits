@@ -8,7 +8,7 @@ public class Fitbits {
 
 	public static void main(String[] args) {
 		
-		//get abosolute path of the test input txt file
+		//get absolute path of the test input text file
 		Path path = Paths.get(".");
 		File file = new File(path.toAbsolutePath() + "/testInput.txt");
 		
