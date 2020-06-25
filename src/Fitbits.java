@@ -8,17 +8,19 @@ public class Fitbits {
 
 	public static void main(String[] args) {
 		
+		//get abosolute path of the test input txt file
 		Path path = Paths.get(".");
 		File file = new File(path.toAbsolutePath() + "/testInput.txt");
+		
 		String inputLine = "";
 		String[] pitchSetUp = new String[2];
 		Pitch p = null;
-		
 		String[] traineeSetUp = new String[3];
 		String movement = "";
 		ArrayList<Trainee> trainees = new ArrayList<Trainee>();
 		ArrayList<String> movements = new ArrayList<String>();
 		
+		//start scanning inputs from the file
 		try {
 			Scanner scan = new Scanner(file);
 			
@@ -38,6 +40,7 @@ public class Fitbits {
 			}
 			scan.close();
 		}
+		//exception handler
 		catch(Exception e){
 			System.out.println(e);
 		}

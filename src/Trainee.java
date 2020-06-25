@@ -85,7 +85,7 @@ public class Trainee {
 		else return false;
 	}
 		
-	//verify movement on X or Y coordinate 
+	//verify movement on X coordinate 
 	private boolean isInPitchAfterMoveOnX(int width, int x, String orien) {
 		if ( x > 0 && x < width) return true;
 		else if ( x == 0 && orien != "W") return true;
@@ -93,6 +93,7 @@ public class Trainee {
 		else return false;
 	}
 	
+	//verify movement on Y coordinate 
 	private boolean isInPitchAfterMoveOnY(int height, int y, String orien) {
 		if ( y > 0 && y < height) return true;
 		else if ( y == 0 && orien != "S") return true;
